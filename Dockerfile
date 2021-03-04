@@ -3,8 +3,6 @@ FROM nginx:${nginx_version} AS build
 
 SHELL ["/bin/bash", "-c"]
 
-RUN usermod -u 33 nginx
-
 RUN set -x \
     && apt-get update \
     && apt-get install -y --no-install-suggests \
@@ -139,11 +137,10 @@ RUN set -x \
     && touch /var/run/nginx.pid \
     && mkdir -p /var/cache/nginx \
     && mkdir -p /var/cache/cache-heater \
-    && chown -R nginx:nginx /etc/nginx /var/log/nginx /var/cache/nginx /var/run/nginx.pid /var/log/modsec_audit.log /var/cache/cache-heater
+    && chown -R www-data:www-data /etc/nginx /var/log/nginx /var/cache/nginx /var/run/nginx.pid /var/log/modsec_audit.log /var/cache/cache-heater
 
 EXPOSE 8080 8443
 
-USER nginx
-
+USER www-data
 
 WORKDIR /etc/nginx
