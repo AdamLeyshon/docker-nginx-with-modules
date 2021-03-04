@@ -143,6 +143,4 @@ RUN groupadd -g 1001 ssl && usermod -G ssl www-data
 
 EXPOSE 8080 8443
 
-USER www-data
-
 WORKDIR /etc/nginx
