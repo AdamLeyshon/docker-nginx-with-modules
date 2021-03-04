@@ -3,6 +3,8 @@ FROM nginx:${nginx_version} AS build
 
 SHELL ["/bin/bash", "-c"]
 
+RUN usermod -u 33 nginx
+
 RUN set -x \
     && apt-get update \
     && apt-get install -y --no-install-suggests \
@@ -142,5 +144,6 @@ RUN set -x \
 EXPOSE 8080 8443
 
 USER nginx
+
 
 WORKDIR /etc/nginx
