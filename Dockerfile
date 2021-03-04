@@ -139,6 +139,8 @@ RUN set -x \
     && mkdir -p /var/cache/cache-heater \
     && chown -R www-data:www-data /etc/nginx /var/log/nginx /var/cache/nginx /var/run/nginx.pid /var/log/modsec_audit.log /var/cache/cache-heater
 
+RUN groupadd -g 1001 ssl && usermod -G ssl www-data
+
 EXPOSE 8080 8443
 
 USER www-data
