@@ -127,6 +127,7 @@ RUN set -x \
       unzip \
       vim-tiny \
       libmaxminddb0 \
+      logrotate \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && ldconfig -v \
